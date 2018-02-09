@@ -1,4 +1,4 @@
-enum CardinalDirection {
+export enum CardinalDirection {
     NORTH = "N",
     EAST = "E",
     WEST = "W",
