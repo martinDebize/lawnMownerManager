@@ -1,6 +1,5 @@
-<div *ngIf="lawn" class="container">
+<div *ngIf="lawn && mowners" class="container">
   <div class="row" *ngFor="let row of lawn.squares">
-    <div class="col-2"></div>
     <div class="col square" *ngFor="let square of row">
       <div class="coordinates">{{square.x}}, {{square.y}}</div>
         <div *ngFor="let mowner of mowners">
@@ -10,6 +9,5 @@
                 *ngIf="square.x === mowner.x && square.y === mowner.y"></div>
         </div>
     </div>
-    <div class="col-2"></div>
   </div>
 </div>

@@ -28,7 +28,7 @@
                     <div class="col col-3">
                         <input [(ngModel)]="mowner.orientation" type="text" class="form-control" placeholder="direction" name="mowner-direction" id="mowner-direction" required>
                     </div>
-                    <button type="button" class="btn btn-primary" (click)="deleteMowner($index)">Delete</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteMowner($index)">Delete</button>
                 </div>
             </div>
         </div>
@@ -40,4 +40,11 @@
     </form>
 </div>
 
-<app-graphic [lawn]="lawn" [mowners]="mowners"></app-graphic>
+<div class="row">
+    <div class="col-8">
+        <app-graphic [lawn]="lawn" [mowners]="mowners"></app-graphic>
+    </div>
+    <div class="col-4">
+        <app-trajectory-manager [mowners]="mowners"></app-trajectory-manager>
+    </div>
+</div>

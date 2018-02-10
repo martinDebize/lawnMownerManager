@@ -1,0 +1,16 @@
+<div *ngIf="mowners" class="container" style="margin-bottom: 20px;">
+    <h2>Trajectory Manager</h2>
+    <h3>In this section, indicate the trajectory as a sequence of letters for your mowners "F", "R" or "L"</h3>
+    <form #trajectoryForm="ngForm">
+      <div class="form-group">
+        <div *ngFor="let mowner of mowners">
+          <label>Trajectory sequence for Mowner</label>
+          <div class="row">
+            <div class="col">
+              <input [(ngModel)]="mowner.trajectory" type="text" placeholder="Trajectory sequence" class="form-control" name="trajectory-sequence" required>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+</div>

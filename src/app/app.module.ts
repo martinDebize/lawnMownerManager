@@ -7,20 +7,23 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { GraphicComponent } from './graphic/graphic.component';
 import { ConfigurationFormComponent } from './configuration-form/configuration-form.component';
+import { TrajectoryManagerComponent } from './trajectory-manager/trajectory-manager.component';
+import { MownerService } from './mowner.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GraphicComponent,
-    ConfigurationFormComponent
+    ConfigurationFormComponent,
+    TrajectoryManagerComponent
   ],
   imports: [
     BrowserModule,
     FileUploadModule,
     FormsModule
   ],
-  providers: [],
+  providers: [MownerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
