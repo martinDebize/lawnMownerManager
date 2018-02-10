@@ -8,7 +8,7 @@ export class Lawn {
         for(var i: number = 0; i < xSize; i++) {
             this.squares[i] = [];
             for(var j: number = 0; j< ySize; j++) {
-                this.squares[i][j] = new Square(xSize-i-1,j);
+                this.squares[i][j] = new Square(j, xSize-i-1);
             }
         }
     }

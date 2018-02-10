@@ -6,11 +6,17 @@
         <div *ngFor="let mowner of mowners">
           <label>Trajectory sequence for Mowner</label>
           <div class="row">
-            <div class="col">
+            <div class="col col-8">
               <input [(ngModel)]="mowner.trajectory" type="text" placeholder="Trajectory sequence" class="form-control" name="trajectory-sequence" required>
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col col-6">
+            <input [(ngModel)]="iterationTime" type="number" placeholder="Time between steps (in seconds)" class="form-control" name="iteration-time" required>
+          </div>
+        </div>
       </div>
+      <button type="submit" class="btn btn-success" [disabled]="!trajectoryForm.form.valid" (click)="moveMowners(mowners)">Submit</button>
     </form>
 </div>

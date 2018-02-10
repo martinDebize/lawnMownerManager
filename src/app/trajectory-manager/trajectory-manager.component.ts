@@ -11,8 +11,12 @@ export class TrajectoryManagerComponent implements OnInit {
 
   @Input() mowners: Mowner[];
 
-  moveMowner(mowner: Mowner): void {
-    this.mownerService.moveMowner(mowner);
+  iterationTime: number;
+
+  moveMowners(mowners: Mowner[]): void {
+    for (var mowner of mowners) {
+      this.mownerService.moveMowner(mowner, this.iterationTime);
+    }
   }
 
   constructor(private mownerService: MownerService) { }
