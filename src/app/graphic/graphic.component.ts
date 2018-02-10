@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Lawn } from '../lawn';
 import { Mowner } from '../mowner';
 import { CardinalDirection } from '../cardinaldirection';
@@ -10,20 +10,15 @@ import { CardinalDirection } from '../cardinaldirection';
 })
 export class GraphicComponent implements OnInit {
 
+  @Input() lawn: Lawn;
+
+  @Input() mowners: Mowner[];
+
   checkType: any = CardinalDirection;
-  lawn: Lawn;
-  mowners: Mowner[];
-  mowner1: Mowner;
-  mowner2: Mowner;
 
   constructor() { }
 
   ngOnInit() {
-    this.lawn = new Lawn(6,6);
-    this.mowner1 = new Mowner(1, 2, CardinalDirection.NORTH);
-    this.mowner2 = new Mowner(3, 3, CardinalDirection.EAST);
-    this.mowners = [];
-    this.mowners.push(this.mowner1, this.mowner2);
   }
 
 }

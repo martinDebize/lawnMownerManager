@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>Configuration</h2>
+    <form>
+
+      <div class="form-group">
+        <label>Lawn Size (Between 1x1 and 20x20)</label>
+        <div class="row">
+            <div class="col col-3">
+                <input type="number" min="1" max="20" class="form-control" name="lawn-horizontal-size" id="lawn-horizontal-size" required>
+            </div>
+            <div class="col col-3">
+                <input type="number" min="1" max="20" class="form-control" name="lawn-vertical-size" id="lawn-vertical-size" required>
+            </div>
+        </div>
+      </div>
+
+      <div *ngIf="mownersToBeConfigured && mownersToBeConfigured.size !== 0">
+        <div *ngFor="let mowner of mownersToBeConfigured">
+            <label for="name">Mowner</label>
+            <div class="row">
+                <div class="col col-3">
+                    <input type="number" min="1" max="20" class="form-control" name="mowner-horizontal-position" id="mowner-horizontal-position" required>
+                </div>
+                <div class="col col-3">
+                    <input type="number" min="1" max="20" class="form-control" name="mowner-vertical-position" id="mowner-vertical-position" required>
+                </div>
+                <div class="col col-3">
+                    <input type="text" class="form-control" name="mowner-orientation" id="mowner-orientation" required>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="initializeMowner()">Add a Mowner</button>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<app-graphic [mowners]="mowners"></app-graphic>

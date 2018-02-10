@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="lawn" class="container">
   <div class="row" *ngFor="let row of lawn.squares">
     <div class="col-2"></div>
     <div class="col square" *ngFor="let square of row">

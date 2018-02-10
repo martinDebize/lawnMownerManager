@@ -5,9 +5,7 @@ export class Mowner {
     y: number;
     orientation: CardinalDirection;
 
-    constructor(x: number, y: number, orientation: CardinalDirection) {
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation;
+    constructor() {
     }
+
 }
