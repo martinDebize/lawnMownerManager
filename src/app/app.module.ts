@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
 import { GraphicComponent } from './graphic/graphic.component';
 import { ConfigurationFormComponent } from './configuration-form/configuration-form.component';
-
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { ConfigurationFormComponent } from './configuration-form/configuration-f
   ],
   imports: [
     BrowserModule,
-    FileUploadModule
+    FileUploadModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

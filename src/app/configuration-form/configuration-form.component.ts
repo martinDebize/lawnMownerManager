@@ -10,12 +10,23 @@ import { Lawn } from '../lawn';
 })
 export class ConfigurationFormComponent implements OnInit {
 
+  xSize: number;
+  ySize: number;
   lawn: Lawn;
   mownersToBeConfigured: Mowner[];
   mowners: Mowner[];
 
-  initializeMowner() : void {
+  addMowner() : void {
     this.mownersToBeConfigured.push(new Mowner());
+  }
+
+  deleteMowner(index) : void {
+    this.mownersToBeConfigured.splice(index, 1);
+  }
+
+  submitConfiguration(): void {
+    this.lawn = new Lawn(this.xSize, this.ySize);
+    this.mowners = this.mownersToBeConfigured;
   }
 
   constructor() { }
