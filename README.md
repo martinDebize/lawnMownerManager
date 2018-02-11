@@ -1,27 +1,25 @@
-# LAWNMOWNERMANAGER
+# Lawn Mowner Manager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+## Installation
 
-## Development server
+After importing the project locally, run the serve with `ng serve --open` in the folder of the project.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Then go to `http://localhost:4200` to see the app.
 
-## Code scaffolding
+## Utilisation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You have two ways to use it :
 
-## Build
+* Enter your inputs manually via a graphic form (be sure to respect that your mowners are not out of bounds) then determine the trajectories of your mowners in a frame next to the lawn.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+OR
 
-## Running unit tests
+* Import a file following the specifications of the problem to immediatly see the results on the lawn.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Possible improvements
 
-## Running end-to-end tests
+* The graphic interface is rudimentary and could surely be improved
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* There are little error processing in the app. Mostly on the file import part where I didn't took the time yet to control if the mowners as inputs are out of bounds or not and simply if the file has a good format.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Unitary tests are missing to see if the input entries give the right outputs. The graphic interface only tests it.
