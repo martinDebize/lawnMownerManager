@@ -1,22 +1,22 @@
 <div *ngIf="mowners" class="container" style="margin-bottom: 20px;">
-    <h2>Trajectory Manager</h2>
-    <h3>In this section, indicate the trajectory as a sequence of letters for your mowners "F", "R" or "L"</h3>
+    <h3>In this section, indicate the trajectory for your mowners as a sequence of letters "F", "R" or "L"</h3>
     <form #trajectoryForm="ngForm">
       <div class="form-group">
         <div *ngFor="let mowner of mowners">
-          <label>Trajectory sequence for Mowner</label>
+          <label style="margin-top: 10px; margin-bottom: -7px; font-weight: bold">Trajectory sequence for Mowner</label>
           <div class="row">
             <div class="col col-8">
-              <input [(ngModel)]="mowner.trajectory" type="text" placeholder="Trajectory sequence" class="form-control" name="trajectory-sequence" required>
+              <input [(ngModel)]="mowner.trajectory" type="text" placeholder="ex: FFLLRRFF" class="form-control" name="trajectory-sequence" required>
             </div>
           </div>
         </div>
+        <label style="margin-top: 15px; margin-bottom: -7px; font-weight: bold">Time between steps (in seconds)</label>
         <div class="row">
           <div class="col col-6">
-            <input [(ngModel)]="iterationTime" type="number" placeholder="Time between steps (in seconds)" class="form-control" name="iteration-time" required>
+            <input [(ngModel)]="iterationTime" type="number" class="form-control" name="iteration-time" required>
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-success" [disabled]="!trajectoryForm.form.valid" (click)="moveMowners(mowners)">Submit</button>
+      <button type="submit" class="btn btn-success" [disabled]="!trajectoryForm.form.valid" (click)="moveMowners(mowners)">Submit Trajectory</button>
     </form>
 </div>

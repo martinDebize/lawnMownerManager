@@ -17,9 +17,13 @@ export class ConfigurationFormComponent implements OnInit {
   lawn: Lawn;
   mownersToBeConfigured: Mowner[];
   mowners: Mowner[];
+  fileUploaded: boolean;
+  formDisabled: boolean;
+  checkType: any = CardinalDirection;
 
 
   readFile(event) : void {
+    this.fileUploaded = true;
     var file: File = event.target.files[0]; 
     var myReader: FileReader = new FileReader();
     var textResult: String = null;
@@ -56,14 +60,26 @@ export class ConfigurationFormComponent implements OnInit {
   }
 
   submitConfiguration(): void {
+    this.formDisabled = true;
     this.lawn = new Lawn(this.xSize, this.ySize);
     this.mowners = this.mownersToBeConfigured;
+  }
+
+  resetConfiguration(): void {
+    this.lawn = null;
+    this.mowners = null;
+    this.mownersToBeConfigured = [];
+    this.xSize = null;
+    this.ySize = null;
+    this.formDisabled = false;
+    this.fileUploaded = false;
   }
 
   constructor(private mownerService: MownerService) { }
 
   ngOnInit() {
     this.mownersToBeConfigured = [];
+    this.fileUploaded = false;
   }
 
 }

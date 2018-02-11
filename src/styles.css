@@ -1,15 +1,33 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+html {
+    background-color: rgb(145, 190, 145);
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
 h1 {
-    color: rgb(83, 153, 51);
     font-size: 250%;
 }
 
-h2 {
-    text-align: center;
-    color: rgb(83, 153, 51);
+h3 {
+    font-size: 125%; 
 }
 
-h3 {
-    font-size: 150%; 
+.btn-primary {
+    background-color: rgb(23, 59, 143) !important;
+}
+
+.btn-primary:hover {
+    background-color: rgb(42, 105, 241) !important;
+}
+
+.btn-warning {
+    background-color: rgb(212, 141, 35) !important;
+}
+
+.btn-warning:hover {
+    background-color: rgb(228, 173, 22) !important;
 }

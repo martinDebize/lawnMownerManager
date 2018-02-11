@@ -1,61 +1,72 @@
-<div class="container" style="margin-bottom: 20px;">
-    <h2>Configuration</h2>
+<div class="container">
+    <h2 style="margin: 30px;">Choose between these two types of Configuration</h2>
     <div class="row">
         <div class="col col-6" style="border: 2px solid black; padding: 20px;">
-            <h3>Configure via a form your different inputs</h3>
+            <h3 style="margin-bottom: 20px;">Configure via a form your different inputs</h3>
             <form #configurationForm="ngForm">
 
-            <div class="form-group">
-                <label>Lawn Size (Between 1x1 and 20x20)</label>
-                <div class="row">
-                    <div class="col col-3">
-                        <input [(ngModel)]="xSize" type="number" min="1" max="20" placeholder="x-size" class="form-control" name="lawn-horizontal-size" id="lawn-horizontal-size" required>
-                    </div>
-                    <div class="col col-3">
-                        <input [(ngModel)]="ySize" type="number" min="1" max="20" placeholder="y-size" class="form-control" name="lawn-vertical-size" id="lawn-vertical-size" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div *ngIf="mownersToBeConfigured && mownersToBeConfigured.size !== 0">
-                    <div *ngFor="let mowner of mownersToBeConfigured">
-                        <label for="name">Mowner</label>
+                <fieldset [disabled]="formDisabled">
+                    <div class="form-group">
+                        <label style="margin-top: 7px;  margin-bottom: -5px; font-weight: bold">Lawn Size (Between 1x1 and 20x20)</label>
                         <div class="row">
                             <div class="col col-3">
-                                <input [(ngModel)]="mowner.x" type="number" min="1" max="20" placeholder="x-position" class="form-control" name="mowner-horizontal-position" id="mowner-horizontal-position" required>
+                                <input [(ngModel)]="xSize" type="number" min="1" max="20" placeholder="x-size" class="form-control" name="lawn-horizontal-size" id="lawn-horizontal-size" required>
                             </div>
                             <div class="col col-3">
-                                <input [(ngModel)]="mowner.y" type="number" min="1" max="20" placeholder="y-position" class="form-control" name="mowner-vertical-position" id="mowner-vertical-position" required>
+                                <input [(ngModel)]="ySize" type="number" min="1" max="20" placeholder="y-size" class="form-control" name="lawn-vertical-size" id="lawn-vertical-size" required>
                             </div>
-                            <div class="col col-3">
-                                <input [(ngModel)]="mowner.orientation" type="text" class="form-control" placeholder="direction" name="mowner-direction" id="mowner-direction" required>
-                            </div>
-                            <button type="button" class="btn btn-danger" (click)="deleteMowner($index)">Delete</button>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <button type="button" class="btn btn-primary" (click)="addMowner()">Add a Mowner</button>
+                    <div class="form-group">
+                        <div *ngIf="mownersToBeConfigured && mownersToBeConfigured.size !== 0">
+                            <div *ngFor="let mowner of mownersToBeConfigured">
+                                <label style="margin-top: 7px; margin-bottom: -5px; font-weight: bold">Mowner</label>
+                                <div class="row" style="margin-bottom: 3px;">
+                                    <div class="col col-3">
+                                        <input [(ngModel)]="mowner.x" type="number" min="0" max="19" placeholder="x-position" class="form-control" name="mowner-horizontal-position" id="mowner-horizontal-position" required>
+                                    </div>
+                                    <div class="col col-3">
+                                        <input [(ngModel)]="mowner.y" type="number" min="0" max="19" placeholder="y-position" class="form-control" name="mowner-vertical-position" id="mowner-vertical-position" required>
+                                    </div>
+                                    <div class="col col-3">
+                                        <input [(ngModel)]="mowner.orientation" type="text" class="form-control" placeholder="direction" name="mowner-direction" id="mowner-direction" required>
+                                    </div>
+                                    <button type="button" class="btn btn-danger" (click)="deleteMowner($index)">Delete</button>
+                                </div>
+                                <span class="errorMessage" *ngIf="mowner.x + 1 > xSize || mowner.y + 1 > ySize">The initial position of this mowner does not fit in the lawn</span>
+                                <span class="errorMessage" *ngIf="mowner.orientation.length !== 0
+                                                                && mowner.orientation !== checkType.NORTH
+                                                                && mowner.orientation !== checkType.EAST
+                                                                && mowner.orientation !== checkType.WEST
+                                                                && mowner.orientation !== checkType.SOUTH">
+                                    The direction of this mowner is not "N", "E", "W" nor "S"
+                                </span>
+                            </div>
+                        </div>
+                    </div>
 
-            <button type="submit" class="btn btn-success" [disabled]="!configurationForm.form.valid || mownersToBeConfigured.length === 0" (click)="submitConfiguration()">Submit</button>
+                    <button type="button" class="btn btn-primary" (click)="addMowner()">Add a Mowner</button>
+                    <button type="submit" class="btn btn-success" style="float: right;" [disabled]="!configurationForm.form.valid || mownersToBeConfigured.length === 0 || configurationForm.nativeElement.classList.contains('errorMessage')" (click)="submitConfiguration()">Submit Configuration</button>
+                </fieldset>
+                <button type="button" class="btn btn-warning" enabled style="margin-top: 30px; color: white;" (click)="resetConfiguration()">Reset Configuration</button>
+                
             </form>
         </div>
 
         <div class="col col-6" style="border: 2px solid black; padding: 20px;">
-            <h3>Import a file following the specifications to configure your inputs</h3>
-            <label for="file-upload" class="btn btn-primary">Upload input file</label>
+            <h3 style="margin-bottom: 30px;">Import a file following the specifications to configure your inputs</h3>
+            <label for="file-upload" class="btn btn-success" style="display: block; text-align: center;">Upload input file</label>
             <input id="file-upload" type="file" (change)="readFile($event)" style="display: none">
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-8">
-        <app-graphic [lawn]="lawn" [mowners]="mowners"></app-graphic>
-    </div>
-    <div class="col-4">
-        <app-trajectory-manager [mowners]="mowners"></app-trajectory-manager>
+    <div class="row">
+        <div class="col col-8" [ngClass]="{'configuration-frame': lawn && mowners}">
+            <app-graphic [lawn]="lawn" [mowners]="mowners"></app-graphic>
+        </div>
+        <div class="col col-4" *ngIf="!fileUploaded" [ngClass]="{'configuration-frame': mowners}">
+            <app-trajectory-manager [mowners]="mowners"></app-trajectory-manager>
+        </div>
     </div>
 </div>

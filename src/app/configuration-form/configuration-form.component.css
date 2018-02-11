@@ -1,0 +1,10 @@
+.configuration-frame {
+    border: 2px solid black; 
+    padding: 20px;
+}
+
+.errorMessage {
+    font-weight: bold;
+    font-size: 85%;
+    color: rgb(155, 22, 22)
+}
