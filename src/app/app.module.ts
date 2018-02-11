@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 import { FormsModule } from '@angular/forms';
 
 
@@ -20,7 +19,6 @@ import { MownerService } from './mowner.service';
   ],
   imports: [
     BrowserModule,
-    FileUploadModule,
     FormsModule
   ],
   providers: [MownerService],
