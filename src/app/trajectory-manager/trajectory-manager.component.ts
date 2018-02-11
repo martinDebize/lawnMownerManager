@@ -18,7 +18,7 @@ export class TrajectoryManagerComponent implements OnInit {
 
   moveMowners(mowners: Mowner[]): void {
     for (var mowner of mowners) {
-      this.mownerService.moveMowner(mowner, this.lawn, this.iterationTime);
+      this.mownerService.moveMowner(mowner, this.lawn);
     }
   }
 

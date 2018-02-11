@@ -7,7 +7,7 @@ import { Lawn } from './lawn';
 @Injectable()
 export class MownerService {
 
-  moveMowner(mowner: Mowner, lawn: Lawn, iterationTime: number) : void {
+  moveMowner(mowner: Mowner, lawn: Lawn) : void {
     for (var i=0; i<mowner.trajectory.length; i++) {
       switch (mowner.trajectory.charAt(i)) {
         case Command.FORWARD : {

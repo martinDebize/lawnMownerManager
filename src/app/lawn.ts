@@ -7,8 +7,8 @@ export class Lawn {
 
     constructor(xSize: number, ySize: number) {
         this.squares = [];
-        this.xSize = xSize+1;
-        this.ySize = xSize+1;
+        this.xSize = xSize;
+        this.ySize = xSize;
         for(var i: number = 0; i < xSize; i++) {
             this.squares[i] = [];
             for(var j: number = 0; j< ySize; j++) {

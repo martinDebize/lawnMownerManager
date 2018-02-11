@@ -46,7 +46,7 @@ export class ConfigurationFormComponent implements OnInit {
       currentMowner.orientation = this.getDirectionFromString(currentMownerConfiguration[2].charAt(0));
       currentMowner.trajectory = textResultLines[i+1];
       this.mowners.push(currentMowner);
-      this.mownerService.moveMowner(currentMowner, this.lawn, 1);
+      this.mownerService.moveMowner(currentMowner, this.lawn);
     }
   }
 
