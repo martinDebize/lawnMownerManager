@@ -2,45 +2,54 @@ import { Injectable } from '@angular/core';
 import { Mowner } from './mowner';
 import { Command } from './command';
 import { CardinalDirection } from './cardinaldirection';
+import { Lawn } from './lawn';
 
 @Injectable()
 export class MownerService {
 
-  moveMowner(mowner: Mowner, iterationTime: number): void {
+  moveMowner(mowner: Mowner, lawn: Lawn, iterationTime: number) : void {
     for (var i=0; i<mowner.trajectory.length; i++) {
-        switch (mowner.trajectory.charAt(i)) {
-          case Command.FORWARD : {
-            this.moveForward(mowner);
-            break;
-          }
-          case Command.LEFT : {
-            this.rotateLeft(mowner);
-            break;
-          }
-          case Command.RIGHT : {
-            this.rotateRight(mowner);
-            break;
-          }
+      switch (mowner.trajectory.charAt(i)) {
+        case Command.FORWARD : {
+          this.moveForward(mowner, lawn);
+          break;
         }
+        case Command.LEFT : {
+          this.rotateLeft(mowner);
+          break;
+        }
+        case Command.RIGHT : {
+          this.rotateRight(mowner);
+          break;
+        }
+      }
     }
   }
 
-  private moveForward(mowner: Mowner): void {
+  private moveForward(mowner: Mowner, lawn: Lawn): void {
     switch (mowner.orientation) {
       case CardinalDirection.NORTH : {
-        mowner.y += 1;
+        if (mowner.y + 1 < lawn.ySize) {
+          mowner.y += 1;
+        }
         break;
       }
       case CardinalDirection.EAST : {
-        mowner.x += 1;
+        if (mowner.x + 1 < lawn.xSize) {
+          mowner.x += 1;
+        }
         break;
       }
       case CardinalDirection.WEST : {
-        mowner.x -= 1;
+        if (mowner.x >= 1) {
+          mowner.x -= 1;
+        }
         break;
       }
       case CardinalDirection.SOUTH : {
-        mowner.y -= 1;
+        if (mowner.y >= 1) {
+          mowner.y -= 1;
+        }
         break;
       }
     }

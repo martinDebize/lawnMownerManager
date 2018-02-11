@@ -47,7 +47,7 @@
                     </div>
 
                     <button type="button" class="btn btn-primary" (click)="addMowner()">Add a Mowner</button>
-                    <button type="submit" class="btn btn-success" style="float: right;" [disabled]="!configurationForm.form.valid || mownersToBeConfigured.length === 0 || configurationForm.nativeElement.classList.contains('errorMessage')" (click)="submitConfiguration()">Submit Configuration</button>
+                    <button type="submit" class="btn btn-success" style="float: right;" [disabled]="!configurationForm.form.valid || mownersToBeConfigured.length === 0" (click)="submitConfiguration()">Submit Configuration</button>
                 </fieldset>
                 <button type="button" class="btn btn-warning" enabled style="margin-top: 30px; color: white;" (click)="resetConfiguration()">Reset Configuration</button>
                 
@@ -66,7 +66,7 @@
             <app-graphic [lawn]="lawn" [mowners]="mowners"></app-graphic>
         </div>
         <div class="col col-4" *ngIf="!fileUploaded" [ngClass]="{'configuration-frame': mowners}">
-            <app-trajectory-manager [mowners]="mowners"></app-trajectory-manager>
+            <app-trajectory-manager [lawn]="lawn" [mowners]="mowners"></app-trajectory-manager>
         </div>
     </div>
 </div>

@@ -10,12 +10,6 @@
             </div>
           </div>
         </div>
-        <label style="margin-top: 15px; margin-bottom: -7px; font-weight: bold">Time between steps (in seconds)</label>
-        <div class="row">
-          <div class="col col-6">
-            <input [(ngModel)]="iterationTime" type="number" class="form-control" name="iteration-time" required>
-          </div>
-        </div>
       </div>
       <button type="submit" class="btn btn-success" [disabled]="!trajectoryForm.form.valid" (click)="moveMowners(mowners)">Submit Trajectory</button>
     </form>

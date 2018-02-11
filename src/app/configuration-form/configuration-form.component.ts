@@ -21,7 +21,6 @@ export class ConfigurationFormComponent implements OnInit {
   formDisabled: boolean;
   checkType: any = CardinalDirection;
 
-
   readFile(event) : void {
     this.fileUploaded = true;
     var file: File = event.target.files[0]; 
@@ -36,18 +35,30 @@ export class ConfigurationFormComponent implements OnInit {
   computeFromFile(textResult: String) {
     var textResultLines: String[] = textResult.split("\n");
     var lawnConfiguration: String[] = textResultLines[0].split(" ");
-    this.lawn = new Lawn(Number(lawnConfiguration[0]), Number(lawnConfiguration[1]));
+    this.lawn = new Lawn(Number(lawnConfiguration[0]) + 1, Number(lawnConfiguration[1]) + 1);
     this.mowners = [];
-    var currentMowner: Mowner = new Mowner();
     var currentMownerConfiguration: String[];
     for (var i=1; i<textResultLines.length; i+=2) {
+      var currentMowner = new Mowner();
       currentMownerConfiguration = textResultLines[i].split(" ");
       currentMowner.x = Number(currentMownerConfiguration[0]);
       currentMowner.y = Number(currentMownerConfiguration[1]);
-      currentMowner.orientation = CardinalDirection.NORTH;
+      currentMowner.orientation = this.getDirectionFromString(currentMownerConfiguration[2].charAt(0));
       currentMowner.trajectory = textResultLines[i+1];
       this.mowners.push(currentMowner);
-      this.mownerService.moveMowner(currentMowner, 1000);
+      this.mownerService.moveMowner(currentMowner, this.lawn, 1);
+    }
+  }
+
+  getDirectionFromString(directionString: string): CardinalDirection {
+    if (directionString === "N") {
+      return CardinalDirection.NORTH;
+    } else if (directionString === "E") {
+      return CardinalDirection.EAST;
+    } else if (directionString === "W") {
+      return CardinalDirection.WEST;
+    } else if (directionString === "S") {
+      return CardinalDirection.SOUTH;
     }
   }
 
