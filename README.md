@@ -14,7 +14,7 @@ You have two ways to use it :
 
 OR
 
-* Import a file following the specifications of the problem to immediatly see the results on the lawn.
+* Import a file following the specifications of the problem to immediatly see the results on the lawn. There is a `test.txt` in the asset folder as an example of file input.
 
 ## Possible improvements
 
